@@ -75,7 +75,7 @@ LED3 = 0 outputs 0V to the LED. LED3 = 1 outputs 5V to the LED.
  * 
  * 3. What voltage do you expect the microcontroller to output to LED D3 when
  *    the statement LED3 = 0; runs? What voltage do you expect the output to be
- *    when the statement LED3 = 1; runs?    5V
+ *    when the statement LED3 = 1; runs? LED3 = 0; makes a voltage of 0V. And LED3 = 1; makes a voltage of 5V.
   
  *    You can confirm the output voltage with a voltmeter if you have access
  *    to one. If you tried that, did the voltage match your prediction?
@@ -101,8 +101,8 @@ LED3 = 0 outputs 0V to the LED. LED3 = 1 outputs 5V to the LED.
  *    What happens when pushbutton SW3 is pressed? Identify at least one
  *    advantage and one disadvantage of controlling the LEDs using 'LATC' writes
  *    rather than through individual 'LEDn = x;' statements.
- * Using 'LATC' it can be a little confusing and you have to kept looking back at the schematic. And using 
-  'LEDn = x;' you know exactly what LED. but using 'LATC' is one line of code which makes it run faster. 
+ *  Using 'LATC' it can be a little confusing and you have to kept looking back at the schematic. And using 
+  'LEDn = x;' you know exactly what LED. but using 'LATC' is one line of code which makes it run faster.
 
  * 6. Next, compare the operation of 'if' and 'while' structures to simulate
  *    momentary buttons. Replace the code you added in 5, above, with this code:
