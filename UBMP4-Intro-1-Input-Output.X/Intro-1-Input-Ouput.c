@@ -53,7 +53,15 @@ int main(void)
         }
         
         // Add code for your Program Analysis and Programming Activities here:
-
+       
+       if(SW3 == 0 || SW4 == 0)
+        {
+            LED4 = 1;
+        }
+        else
+        {
+            LED4 = 0;
+        }
 
         // Activate bootloader if SW1 is pressed.
         if(SW1 == 0)
@@ -101,8 +109,9 @@ LED3 = 0 outputs 0V to the LED. LED3 = 1 outputs 5V to the LED.
  *    What happens when pushbutton SW3 is pressed? Identify at least one
  *    advantage and one disadvantage of controlling the LEDs using 'LATC' writes
  *    rather than through individual 'LEDn = x;' statements.
- *  Using 'LATC' it can be a little confusing and you have to kept looking back at the schematic. And using 
-  'LEDn = x;' you know exactly what LED. but using 'LATC' is one line of code which makes it run faster.
+ *  The 4 LED lights turn on all at the same time and turn off at the same time. So they flash but they do not flash fast.
+ Using 'LATC' it can be a little confusing and you have to kept looking back at the schematic. And using 
+ 'LEDn = x;' you know exactly what LED. but using 'LATC' is one line of code which makes it run faster.
 
  * 6. Next, compare the operation of 'if' and 'while' structures to simulate
  *    momentary buttons. Replace the code you added in 5, above, with this code:
@@ -128,10 +137,16 @@ LED3 = 0 outputs 0V to the LED. LED3 = 1 outputs 5V to the LED.
  * 
  *    Next, press and hold SW3 while pressing and releasing SW4. Does it work
  *    as expected?
+   Yes, it does. 
  * 
  *    Next, try press and holding SW4 while pressing and releasing SW3. Does it
  *    work as expected? Explain the difference in operation between the 'if' and
  *    'while' structures making up the momentary button code.
+  when the button is pressed the light turns on and also off. While pressing and holding SW4 while pressing
+  and realsing SW3 is does not work. That might be because of the order its coded or maybe because it has to do
+  whith the "if" and "while" structures and which of is being used becasue of block of code is using an " if" structure
+  and a "while " structure.
+
  * 
  * 7. Let's explore logical conditions using 'if' statements. Replace the code
  *    added in 6, above, with this nested if code to make a logical AND
@@ -156,6 +171,8 @@ LED3 = 0 outputs 0V to the LED. LED3 = 1 outputs 5V to the LED.
 
  *    Test the code to ensure it works as expected. Does the order of the if
  *    conditions matter? (eg. swap the conditional checks for SW3 and SW4)
+ Yes, the order of if conditions matter. And why that is beacuse when the end of the code is reached of your if
+ condition without a true expression. No block of code will be executed. 
  * 
  * 8. Next, replace the code from 7 with the following code which implements a
  *    logical AND conditional operator composed of two ampersands '&&':
@@ -173,6 +190,8 @@ LED3 = 0 outputs 0V to the LED. LED3 = 1 outputs 5V to the LED.
  *    Does '&&' work the same way as the nested if structures? Can you think of
  *    at least one advantage of using a logical conditional operator instead of
  *    nested if structures?
+ Yes, I do think that '&&' works the same way as the nested if structures. 
+ one advantage of logcal opertaors is that that are used to evaluate 2 or more contions (multiple conditions)
  * 
  * 9. Replace the double ampersand '&&' with double vertical bars '||)' to make
  *    a logical OR conditional operator. Your code should look like this:
@@ -188,8 +207,12 @@ LED3 = 0 outputs 0V to the LED. LED3 = 1 outputs 5V to the LED.
         }
 
  *    Describe the conditions under which LED4 turns on.
- * 
- * 
+   -  LED4 should turn on by pressing either SW3 or SW4. pressing either parallel SW will allow current to flow 
+ * to the LED. 
+   - XOR operator can also turn on the  LED by pressing SW3 or SW4 but not both of them. This operator is made by using
+   "^^" 
+
+   
  * Programming Activities
  * 
  * 1. The statement '__delay_ms(100);' creates a 100ms delay. Try changing one
@@ -209,14 +232,16 @@ LED3 = 0 outputs 0V to the LED. LED3 = 1 outputs 5V to the LED.
         if(SW5 == 0)
         {
             BEEPER = 1;
-            __delay_us(567);
+            __delay_us(300);
             BEEPER = 0;
-            __delay_us(567);
+            __delay_us(300);
         }
 
  *    Try changing the delay values in both of the __delay_us(); functions.
  *    Does the pitch of the tone increase or decrease if the delay value is
  *    made smaller?
+ when the delay value is made shorter, the pitch of the tone will decrease becasue of the frequency (# of waves/second)
+ and the time period (# of seconds/wave). 
  * 
  * 3. This code demonstrates a more compact way of toggling the beeper output
  *    using a logical NOT operator '!'. Replace the code above, with this code:
