@@ -83,10 +83,12 @@ LED3 = 0 outputs 0V to the LED. LED3 = 1 outputs 5V to the LED.
  * 
  * 3. What voltage do you expect the microcontroller to output to LED D3 when
  *    the statement LED3 = 0; runs? What voltage do you expect the output to be
- *    when the statement LED3 = 1; runs? LED3 = 0; makes a voltage of 0V. And LED3 = 1; makes a voltage of 5V.
+ *    when the statement LED3 = 1; runs?
+  LED3 = 0; makes a voltage of 0V. And LED3 = 1; makes a voltage of 5V.
   
  *    You can confirm the output voltage with a voltmeter if you have access
- *    to one. If you tried that, did the voltage match your prediction?
+ *    to one. If you tried that, did the voltage match your prediction? 
+ Almost, but it was not exactly the same but it was close enough. So yes it did.
  
 
  * 4. The statement 'if(SW2 == 0)' uses two equal signs, while the statement
@@ -101,15 +103,15 @@ LED3 = 0 outputs 0V to the LED. LED3 = 1 outputs 5V to the LED.
         if(SW3 == 0)
         {
             LATC = 0b00000000;
-            __delay_ms(100);
+            __delay_ms(500);
             LATC = 0b11110000;
-            __delay_ms(100);
+            __delay_ms(500);
         }
 
  *    What happens when pushbutton SW3 is pressed? Identify at least one
  *    advantage and one disadvantage of controlling the LEDs using 'LATC' writes
  *    rather than through individual 'LEDn = x;' statements.
- *  The 4 LED lights turn on all at the same time and turn off at the same time. So they flash but they do not flash fast.
+ The 4 LED lights turn on all at the same time and turn off at the same time. So they flash but they do not flash fast.
  Using 'LATC' it can be a little confusing and you have to kept looking back at the schematic. And using 
  'LEDn = x;' you know exactly what LED. but using 'LATC' is one line of code which makes it run faster.
 
@@ -171,9 +173,12 @@ LED3 = 0 outputs 0V to the LED. LED3 = 1 outputs 5V to the LED.
 
  *    Test the code to ensure it works as expected. Does the order of the if
  *    conditions matter? (eg. swap the conditional checks for SW3 and SW4)
- Yes, the order of if conditions matter. And why that is beacuse when the end of the code is reached of your if
- condition without a true expression. No block of code will be executed. 
- * 
+ Yes, the order of if conditions matter. when a  if condition is true the statement will be executed.The block 
+ of code after the if statement is grouped together with curly braces, although a line statemet is also allowed.
+ But it is alaways a good idea to because any other lines added after the first line will always ececute, because 
+ it does not matter if the condition is true or even fasle, if the brackets (curly braces are cut).
+
+
  * 8. Next, replace the code from 7 with the following code which implements a
  *    logical AND conditional operator composed of two ampersands '&&':
  
@@ -210,23 +215,27 @@ LED3 = 0 outputs 0V to the LED. LED3 = 1 outputs 5V to the LED.
    -  LED4 should turn on by pressing either SW3 or SW4. pressing either parallel SW will allow current to flow 
  * to the LED. 
    - XOR operator can also turn on the  LED by pressing SW3 or SW4 but not both of them. This operator is made by using
-   "^^" 
+   "^^". 
 
    
  * Programming Activities
  * 
  * 1. The statement '__delay_ms(100);' creates a 100ms delay. Try changing one
  *    or more of the delay values in the program to 500ms and see what happens.
+making that statement '__delay_ms(100);' makes a 100ms delay, so making the statement '__delay_ms(500);' 
+would create a 500ms delay. Which then would make the delay longer. 
  * 
  *    Can the delay be made even longer? Try 1000 ms. How big can the delay be
  *    before MPLAB-X produces an error message? (Hint: can you think of a fast
  *    and efficient way of guessing an unknown number?)
+    ???
  * 
  * 2. The '__delay_ms();' function only accepts integers as delay values. To
  *    make delays shorter than 1ms, specify a delay in microseconds using the
  *    '__delay_us();' function. You won't be able to see such short LED flashes
  *    with your eyes, but you could measure them using an oscilloscope, or hear
  *    them if they are used to turn the piezo beeper on and off. Try this code:
+ 
  
         // Make a tone while SW5 is held
         if(SW5 == 0)
