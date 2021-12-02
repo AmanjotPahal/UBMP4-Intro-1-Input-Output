@@ -228,23 +228,23 @@ would create a 500ms delay. Which then would make the delay longer.
  *    Can the delay be made even longer? Try 1000 ms. How big can the delay be
  *    before MPLAB-X produces an error message? (Hint: can you think of a fast
  *    and efficient way of guessing an unknown number?)
-    ???
+  
  * 
  * 2. The '__delay_ms();' function only accepts integers as delay values. To
  *    make delays shorter than 1ms, specify a delay in microseconds using the
  *    '__delay_us();' function. You won't be able to see such short LED flashes
  *    with your eyes, but you could measure them using an oscilloscope, or hear
  *    them if they are used to turn the piezo beeper on and off. Try this code:
- 
- 
-        // Make a tone while SW5 is held
-        if(SW5 == 0)
-        {
-            BEEPER = 1;
-            __delay_us(300);
-            BEEPER = 0;
-            __delay_us(300);
-        }
+     
+      // Make a tone while SW5 is held
+       if(SW5 == 0)
+       {
+           BEEPER = 1;
+           __delay_us(300);
+           BEEPER = 0;
+           __delay_us(300);
+       }
+
 
  *    Try changing the delay values in both of the __delay_us(); functions.
  *    Does the pitch of the tone increase or decrease if the delay value is
