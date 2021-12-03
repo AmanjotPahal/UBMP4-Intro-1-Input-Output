@@ -54,13 +54,11 @@ int main(void)
         
         // Add code for your Program Analysis and Programming Activities here:
        
-       if(SW3 == 0 || SW4 == 0)
+       // Make a tone while SW5 is held
+        if(SW5 == 0)
         {
-            LED4 = 1;
-        }
-        else
-        {
-            LED4 = 0;
+            BEEPER = !BEEPER;
+            __delay_us(567);
         }
 
         // Activate bootloader if SW1 is pressed.
@@ -228,6 +226,7 @@ would create a 500ms delay. Which then would make the delay longer.
  *    Can the delay be made even longer? Try 1000 ms. How big can the delay be
  *    before MPLAB-X produces an error message? (Hint: can you think of a fast
  *    and efficient way of guessing an unknown number?)
+ Yes the delay can be made longer. 1000ms works. but  up untill 4205 will work.
   
  * 
  * 2. The '__delay_ms();' function only accepts integers as delay values. To
@@ -240,16 +239,16 @@ would create a 500ms delay. Which then would make the delay longer.
        if(SW5 == 0)
        {
            BEEPER = 1;
-           __delay_us(300);
+           __delay_us(30);
            BEEPER = 0;
-           __delay_us(300);
+           __delay_us(30);
        }
 
 
  *    Try changing the delay values in both of the __delay_us(); functions.
  *    Does the pitch of the tone increase or decrease if the delay value is
  *    made smaller?
- when the delay value is made shorter, the pitch of the tone will decrease becasue of the frequency (# of waves/second)
+ when the delay value is made shorter, the pitch of the tone will Increase becasue of the frequency (# of waves/second)
  and the time period (# of seconds/wave). 
  * 
  * 3. This code demonstrates a more compact way of toggling the beeper output
@@ -267,16 +266,66 @@ would create a 500ms delay. Which then would make the delay longer.
  *    be in after this code runs? While one advantage of this method is smaller
  *    code, can you think of one or more disadvantages based on its output when
  *    the button is released?
+  The logical NOT opertaor '!' can join more than one conditions to assces some more complex conditional cobinations.
+  And it is used to check the oppsite result of any condition. So if the conditions result is true then it will
+  returns false. So a disadvantage might be that it might be confusing and complex sometimes. 
+  As a result the stage of BEEPER output after the code runs will be 1 (true) which is the opposite.
+
  * 
  * 4. Using modified versions of the original SW2 'if' structure, create a
  *    program that makes a unique LED flashing pattern for each pushbutton.
- * 
+     
+      if(SW2 == 0)
+      { 
+        LED4 = 1;
+        __delay_ms(85)
+        LED6 = 1;
+        __delay_ms(85)
+        LED4 = 0;
+        __delay_ms(85)
+        LED6 = 0;
+        __delay_ms(85)
+     }
+     
+      if(SW3 == 0)
+      {
+         LED3 = 1;
+         __delay_ms(1000)
+         LED4 = 1;
+         __delay_ms(1000)
+         LED3 = 0;
+         __delay_ms(1000)
+         LED4 = 0;
+         __delay_ms(1000)
+      }
+
+       if (SW5 == 0)
+       {
+             LED5 = 1;
+             __delay_ms(50)
+             LED5 = 0;
+             __delay_ms(50)
+       }
+
  *    Test each of your flashing patterns. Describe what happens when more than
  *    one button is held. Do all of the patterns try to flash the LEDs at the
  *    same time, or sequentially? Explain why this is.
  * 
  * 5. Create a program that makes a different tone for each pushbutton.
- * 
+ *
+    if(SW2 == 0)
+        {
+            BEEPER = !BEEPER;
+            __delay_us(314);
+        }
+
+
+    if(SW3 == 0)
+        {
+            BEEPER = !BEEPER;
+            __delay_us(400)
+        }
+
  *    Test each tone by pressing each button individually. Next, press two or
  *    more buttons at the same time. Describe what the tone waveform would look
  *    like when more than one button is held.
