@@ -329,24 +329,68 @@ would create a 500ms delay. Which then would make the delay longer.
  *    Test each tone by pressing each button individually. Next, press two or
  *    more buttons at the same time. Describe what the tone waveform would look
  *    like when more than one button is held.
+ */
  * 
- * 6. Use individual 'if' structures to simulate 'Start' and 'Stop' buttons for
+
+/*  (Create a program makes two different tones,) */
+      if(SW2 == 0)
+      {
+          LED3 = 1;
+          BEEPER = 1;
+          __delay_us(567)
+          BEEPER = 0;
+          __delay(567)
+      }
+      else 
+      {
+          LED3 = 0;
+      }
+
+        if(SW3 == 0)
+      {
+          LED4 = 1;
+          BEEPER = 1;
+          __delay_us(965)
+          BEEPER = 0;
+          __delay_us(955)
+
+      }
+       else 
+       {
+          LED4 = 0;
+       }
+
+       if(SW4 == 0 && SW5 != 0)
+       {
+          LED5 = 1;
+       }
+
+       if(SW5 ==0)
+       {
+          LED5 = 0;
+       }
+
+
+
+ * /*6. Use individual 'if' structures to simulate 'Start' and 'Stop' buttons for
  *    an industrial machine. LED D4 should turn on when SW3 is pressed, stay on
  *    even after SW3 is released, and turn off when SW4 is pressed. Test your
  *    program to make sure it works.
- * 
+
  * 7. Running your program from 6, above, describe what happens when both SW3
  *    and SW4 are pressed. Does LED D4 stay on? If so, how does the brightness
  *    of LED D4 compare between its normal on state following SW3 being pressed
  *    to this new state when both SW3 and SW4 are bing held? Can you explain
  *    why it changes?
- * 
+   When both  SW3 and SW4  are pressed the light  is on ( but dimmer) but not as bright as if 
+   it was in its normal state. 
+ *
  * 8. As you can imagine, an industrial machine that is able to turn on even
  *    while its 'Stop' button is pressed represents a significant safety hazard.
  *    Using a logical conditional operator, modify the start-stop program from
  *    activity 5 to make it safer. SW3 should only turn on LED D4 if SW4 is
  *    released.
- * 
+
  * 9. LED D1 is normally used to indicate that a program is running, but it can
  *    be controlled by your program as well. If you take a look at the UBMP4
  *    schematic, you will see that LED D1's cathode (or negative) pin is
